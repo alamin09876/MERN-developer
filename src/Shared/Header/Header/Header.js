@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => console.error(error))
+    }
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -11,17 +20,35 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to="/">Home</Link></li>
-                        
-                        <li><Link>Login</Link></li>
+
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/registration">Registration</Link></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                <li><Link to="/">Home</Link></li>
+                    <li><Link to="/">Home</Link></li>
+
+                    {/* <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/registration">Registration</Link></li> */}
                     
-                <li><Link>Login</Link></li>
+                    <li>
+                    {
+                user?.uid ?
+                  <>
+                    <span>{user?.displayName}</span>
+                    <button onClick={handleLogout} style={{ marginLeft: '20px' }}>Log Out</button>
+                    <li><Link to="/addservice">Add Service</Link></li>
+                  </>
+                  :
+                  <>
+                    <button><Link to="/login">Login</Link></button>
+                    <button><Link to="/registration">Registration</Link></button>
+                  </>
+              }
+                    </li>
                 </ul>
             </div>
             <div className="navbar-end">
