@@ -77,7 +77,7 @@ const Service = () => {
                 {review.length}
                 
                 {
-                    filtered.map(rev => <p>{
+                    filtered.map(rev => <p rev={rev}>{
                           <img
                             style={{ height: '30px' }}
                             src={rev.userImage}

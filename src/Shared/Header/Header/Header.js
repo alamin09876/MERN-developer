@@ -40,7 +40,8 @@ const Header = () => {
                   <>
                     <span>{user?.displayName}</span>
                     <button onClick={handleLogout} style={{ marginLeft: '20px' }}>Log Out</button>
-                    <li><Link to="/addservice">Add Service</Link></li>
+                    <Link to="/addservice">Add Service</Link>
+                    <Link to="/myreviews">My Reviews</Link>
                   </>
                   :
                   <>

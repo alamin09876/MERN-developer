@@ -9,6 +9,8 @@ import Service from '../Pages/Home/Services/Service';
 import Services from '../Pages/Home/Services/Services';
 import Login from '../Pages/Login/Login/Login';
 import Registration from '../Pages/Login/Registration/Registration';
+import MyReviews from '../Pages/MyReviews/MyReviews';
+import Update from '../Pages/MyReviews/Update';
 
 export const route = createBrowserRouter([
     {
@@ -39,6 +41,16 @@ export const route = createBrowserRouter([
             {
                 path : '/addservice',
                 element : <AddService></AddService>
+            },
+            {
+                path:'/myreviews',
+                element : <MyReviews></MyReviews>,
+                
+            },
+            {
+                path : '/update/:id',
+                element : <Update></Update>,
+                loader : ({params}) => fetch (`http://localhost:5000/reviews/${params.id}`)
             },
            
             { path: '*', element: <div>This route is not found</div> }
