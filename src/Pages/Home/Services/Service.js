@@ -29,13 +29,15 @@ const Service = () => {
         const uName = user?.displayName || '';
         console.log("name",uName);
         const userImage = user?.photoURL || '';
+        const userEmail = user?.email;
         const reviewData = form.review.value;
 
         const reviews = {
             reviewId: _id,
             userName: uName,
             reviewData,
-            userImage
+            userImage,
+            userEmail
         }
 
         fetch('http://localhost:5000/reviews', {
