@@ -37,7 +37,7 @@ const Header = () => {
                     user?.uid ?
                         <>
                             <span>{user?.displayName}</span>
-                            <Link className='mr-5 ml-5' to="/addservice">Add Service</Link>
+                            <Link className='mr-5 ml-5' to="/addservice">Add Course</Link>
                             <Link className='mr-5' to="/myreviews">My Reviews</Link>
                             <button className='mr-5' onClick={handleLogout}>Log Out</button>
                         </>

@@ -37,14 +37,18 @@ const AddService = () => {
 
     }
     return (
-        <div>
-            <form onSubmit={handleReview}>
-                <input name="photoURL" type="text" placeholder="Photo URL" className="input input-ghost w-full  input-bordered" />
-                <input name="title" type="text" placeholder="Title" className="input input-ghost w-full  input-bordered" />
-                <input name="price" type="text" placeholder="Price" className="input input-ghost w-full  input-bordered" />
-                <textarea name="description" className="textarea textarea-bordered h-24 w-full" placeholder="Description" required></textarea>
+        <div className='flex justify-center my-6' >
+            
+            <form onSubmit={handleReview} className='my-6'>
+            <h1 className='text-5xl font-semibold mb-6 text-center text-black'>Add a course</h1>
+                <input name="photoURL" type="text" placeholder="Photo URL" className="input input-ghost mb-6 input-bordered w-96" /><br></br>
+                <input name="title" type="text" placeholder="Title" className="input input-ghost  input-bordered mb-6 w-96" /><br></br>
+                <input name="price" type="text" placeholder="Price" className="input input-ghost input-bordered mb-6 w-96" /><br></br>
+                <textarea name="description" className="textarea mb-6 textarea-bordered h-24 w-96" placeholder="Description" required></textarea><br></br>
 
-                <input className='btn' type="submit" value="Details" />
+                <div className='flex justify-center'>
+                <input className='btn ' type="submit" value="Details" />
+                </div>
             </form>
         </div>
     );
