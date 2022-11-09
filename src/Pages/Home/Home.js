@@ -8,10 +8,12 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            
             <Services></Services>
-            <Link to="/services">
-                        <button className="btn btn-primary">See All</button>
-                    </Link>
+            <div className='mx-auto '>
+                <Link to="/services">
+                <button className="btn btn-primary font-bold mx-auto my-10 flex justify-center ">See All</button>
+            </Link></div>
         </div>
     );
 };

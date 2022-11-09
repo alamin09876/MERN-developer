@@ -12,7 +12,7 @@ const Header = () => {
             .catch(error => console.error(error))
     }
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-stone-600 mt-6 text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -25,35 +25,28 @@ const Header = () => {
                         <li><Link to="/registration">Registration</Link></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <a className="ml-5 normal-case text-xl text-[yellow] font-bold">mernDEV</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                    <li><Link to="/">Home</Link></li>
-
-                    {/* <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/registration">Registration</Link></li> */}
-                    
-                    <li>
-                    {
-                user?.uid ?
-                  <>
-                    <span>{user?.displayName}</span>
-                    <button onClick={handleLogout} style={{ marginLeft: '20px' }}>Log Out</button>
-                    <Link to="/addservice">Add Service</Link>
-                    <Link to="/myreviews">My Reviews</Link>
-                  </>
-                  :
-                  <>
-                    <button><Link to="/login">Login</Link></button>
-                    <button><Link to="/registration">Registration</Link></button>
-                  </>
-              }
-                    </li>
+                    <li className='text-xl'><Link to="/">Home</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Get started</a>
+                {
+                    user?.uid ?
+                        <>
+                            <span>{user?.displayName}</span>
+                            <Link className='mr-5 ml-5' to="/addservice">Add Service</Link>
+                            <Link className='mr-5' to="/myreviews">My Reviews</Link>
+                            <button className='mr-5' onClick={handleLogout}>Log Out</button>
+                        </>
+                        :
+                        <>
+                            <button className='mr-10'><Link to="/login">Login</Link></button>
+                            <button className='mr-10'><Link to="/registration">Registration</Link></button>
+                        </>
+                }
             </div>
         </div>
     );
