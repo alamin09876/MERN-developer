@@ -16,7 +16,7 @@ const Service = () => {
             .then(data => setReview(data))
     }
 
-        , [])
+        , [review])
 
     const filtered = review.filter(obj => {
         return obj.reviewId === service._id;
@@ -50,10 +50,10 @@ const Service = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                // if(data.acknowledged){
-                //     alert("Order placed Successfully")
-                //     form.reset();
-                // }
+                if(data.acknowledged){
+                    alert("Order placed Successfully")
+                    form.reset();
+                }
                 
             })
             .catch(err => console.log(err))
@@ -74,7 +74,6 @@ const Service = () => {
             </div>
 
             <div>
-                {review.length}
                 
                 {
                     filtered.map(rev => <p rev={rev}>{

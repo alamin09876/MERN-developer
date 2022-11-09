@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const Update = () => {
     const storedUser = useLoaderData();
     
     const [user, setUser] = useState(storedUser);
+    console.log(user)
 
+    useEffect(() =>{
+        fetch('http://localhost:5000/reviews')
+        .then(res => res.json())
+        .then(data => setUser(data))
+    },[])
     const handleUpdateUser = event =>{
         event.preventDefault();
-        // const form = event.target;
-        // const review = form.review.value;
-        // console.log(user);
+        
+        const form = event.target;
+        const review = form.review.value;
+        const updatedReview = {reviewData:review}
+        // console.log(reviewData:updatedReview);
         fetch(`http://localhost:5000/reviews/${storedUser._id}`,{
             method : "PUT",
             headers :{
                 'content-type' : 'application/json'
             },
-            body : JSON.stringify(user)
+            body : JSON.stringify(updatedReview)
         })
         .then(res => res.json())
         .then(data => {
@@ -29,19 +37,13 @@ const Update = () => {
         
     }
 
-    const handleInputChange = event =>{
-        const review = event.target.review;
-        const value = event.target.value;
-        const newUser = {...user}
-        newUser[review] = value;
-        setUser(newUser);
-    }
+    
 
     return (
         <div>
-            <h2>Please Update: {storedUser.name}</h2>
+            <h2>Please Update: {storedUser.reviewData}</h2>
             <form onSubmit={handleUpdateUser}>
-            <textarea onBlur={handleInputChange} name="review" className="textarea textarea-bordered h-24 w-full" placeholder="Your Message" required></textarea>
+            <textarea  name="review" className="textarea textarea-bordered h-24 w-full" placeholder="Your Message" defaultValue={storedUser.reviewData} required></textarea>
                 <button type="submit">Update User</button>
             </form>
         </div>
