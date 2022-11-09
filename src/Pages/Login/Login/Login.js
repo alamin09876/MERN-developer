@@ -72,7 +72,7 @@ const Login = () => {
                         </div>
                     </form>
                     <button onClick={googleSignIn} className='m-5'>Google</button>
-                    <p className='text-center'>New to Genius Car <Link className='text-orange-600 font-bold' to="/registration">Sign Up</Link> </p>
+                    <p className='text-center'>New to Mern Developer <Link className='text-orange-600 font-bold' to="/registration">Sign Up</Link> </p>
                 </div>
             </div>
         </div>
