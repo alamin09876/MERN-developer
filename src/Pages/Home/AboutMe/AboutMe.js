@@ -4,7 +4,7 @@ import img from '../../../assest/images/about me.jpg'
 const AboutMe = () => {
     return (
         <div className="hero ">
-            <div className="hero-content grid grid-cols-2">
+            <div className="hero-content grid lg:grid-cols-2 grid-cols-1 mx-auto">
                 <div>
                     <h1 className="text-5xl font-bold">About Me!</h1>
                     <p className="py-6">I'm Al-Amin, I'm a developer with a passion for teaching. I'm the lead instructor at the London App Brewery, London's leading Programming Bootcamp. I've helped hundreds of thousands of students learn to code and change their lives by becoming a developer. I've been invited by companies such as Twitter, Facebook and Google to teach their employees.
@@ -16,7 +16,9 @@ const AboutMe = () => {
                         I'll be there for you every step of the way.</p>
                     
                 </div>
+                <div>
                 <img src={img} alt="" className="max-w-sm ml-36 shadow-2xl rounded-full" />
+                </div>
             </div>
         </div>
     );
