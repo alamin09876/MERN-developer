@@ -2,14 +2,15 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ServiceCard from './ServiceCard';
+import ServiceCard from '../../Home/Services/ServiceCard';
 
-const Services = () => {
+
+const COurses = () => {
     const [services, setServices] = useState([]);
     const serv = services;
     
     useEffect( () =>{
-        fetch('https://mern-developer-server.vercel.app/services')
+        fetch('https://mern-developer-server.vercel.app/courses')
         .then(res =>res.json())
         .then(data => setServices(data))
     }, []);
@@ -34,4 +35,4 @@ const Services = () => {
     );
 };
 
-export default Services;
+export default COurses;

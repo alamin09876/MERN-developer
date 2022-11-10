@@ -11,7 +11,7 @@ const MyReviews = () => {
     // console.log(reviews)
 
     // useEffect(() =>{
-    //     fetch('http://localhost:5000/reviews')
+    //     fetch('https://mern-developer-server.vercel.app/reviews')
     //     .then(res => res.json())
     //     .then(data => setDeleteReview(data))
     // },[])
@@ -21,7 +21,7 @@ const MyReviews = () => {
         const agree = window.confirm(`Are you sure you want to delete : ${review.reviewData}`)
         if (agree) {
             console.log("Deleting user with id:", review._id)
-            fetch(`http://localhost:5000/reviews/${review._id}`, {
+            fetch(`https://mern-developer-server.vercel.app/reviews/${review._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -37,7 +37,7 @@ const MyReviews = () => {
         }
     }
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://mern-developer-server.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

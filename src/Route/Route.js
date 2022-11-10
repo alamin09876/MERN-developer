@@ -27,9 +27,13 @@ export const route = createBrowserRouter([
                 element : <Services></Services>
             },
             {
+                path : '/services',
+                element : <Services></Services>
+            },
+            {
                 path : '/service/:id',
                 element : <PrivateRoute><Service></Service></PrivateRoute>,
-                loader : ({params}) => fetch (`http://localhost:5000/services/${params.id}`)
+                loader : ({params}) => fetch (`https://mern-developer-server.vercel.app/services/${params.id}`)
             },
             {
                 path :'/login',
@@ -51,7 +55,7 @@ export const route = createBrowserRouter([
             {
                 path : '/update/:id',
                 element : <PrivateRoute><Update></Update></PrivateRoute>,
-                loader : ({params}) => fetch (`http://localhost:5000/reviews/${params.id}`)
+                loader : ({params}) => fetch (`https://mern-developer-server.vercel.app/reviews/${params.id}`)
             },
            
             { path: '*', element: <div>This route is not found</div> }

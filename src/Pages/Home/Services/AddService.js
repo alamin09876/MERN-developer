@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const AddService = () => {
     const { user } = useContext(AuthContext);
+    const notify = () => toast("Wow so easy!");
     const handleReview = event => {
         event.preventDefault();
         const form = event.target;
@@ -17,7 +20,7 @@ const AddService = () => {
             price,
             discription: description,
         }
-        fetch('http://localhost:5000/services', {
+        fetch('https://mern-developer-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -47,7 +50,8 @@ const AddService = () => {
                 <textarea name="description" className="textarea mb-6 textarea-bordered h-24 w-96" placeholder="Description" required></textarea><br></br>
 
                 <div className='flex justify-center'>
-                    <input className='btn ' type="submit" value="Details" />
+                    <input onClick={notify} className='btn ' type="submit" value="Details" />
+                    <ToastContainer />
                 </div>
             </form>
         </div>
