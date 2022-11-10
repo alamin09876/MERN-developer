@@ -4,10 +4,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import img from '../../../assest/images/login.webp'
 import { FaGoogle } from 'react-icons/fa';
+import useTitle from '../../../title/Title';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const Login = () => {
-
+    useTitle('Login')
+    const notify = () => toast("Login successfully!");
     const {loginUser, loginInWithGoogle} = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
@@ -50,7 +54,7 @@ const Login = () => {
                 <div className="text-center lg:text-left">
                    <img src={img} alt=''></img>
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20 mx-auto">
                     <h1 className="text-5xl text-center font-bold">Login</h1>
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
@@ -63,13 +67,14 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <input className="btn btn-primary" type="submit" value="Login" />
+                            <input onClick={notify} className="btn btn-primary" type="submit" value="Login" />
+                            <ToastContainer />
                         </div>
                     </form>
                     <button onClick={googleSignIn} className='m-5 btn bg-sky-400 font-medium'>

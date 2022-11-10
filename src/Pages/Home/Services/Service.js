@@ -2,10 +2,13 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaUser, FaUserAlt } from 'react-icons/fa';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const Service = () => {
     const service = useLoaderData();
+    const notify = () => toast("Review Added successfully!");
     const { user } = useContext(AuthContext);
     const [review, setReview] = useState([]);
     const { picture, price, name, rating, discription, _id } = service;
@@ -30,10 +33,12 @@ const Service = () => {
         console.log("name", uName);
         const userImage = user?.photoURL || '';
         const userEmail = user?.email;
+        const courseName = service.name
         const reviewData = form.review.value;
 
         const reviews = {
             reviewId: _id,
+            courseName,
             userName: uName,
             reviewData,
             userImage,
@@ -51,7 +56,7 @@ const Service = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert("Order placed Successfully")
+                   
                     form.reset();
                 }
 
@@ -104,8 +109,8 @@ const Service = () => {
                                 <div className='flex justify-center'>
                                 <textarea name="review" className="textarea textarea-bordered h-24 w-full lg:w-[630px] my-6" placeholder="Your Message" required></textarea>
                                 </div>
-                                <button className="btn btn-primary font-bold mx-auto mb-10 flex justify-center ">Give Feedback</button>
-                               
+                                <button onClick={notify} className="btn btn-primary font-bold mx-auto mb-10 flex justify-center ">Give Feedback</button>
+                                <ToastContainer />
                             </form>
                         </div>
                     </>

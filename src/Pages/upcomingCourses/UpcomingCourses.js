@@ -8,10 +8,10 @@ const UpcomingCourses = () => {
     return (
         <div >
             <div>
-                <h2 className='text-5xl mb-10'>Upcoming Courses</h2>
+                <h2 className='text-5xl mb-10 text-center'>Upcoming Courses</h2>
             </div>
-            <div className='flex gap-10 my-10'>
-                <div className="card w-96 bg-base-100 shadow-xl">
+            <div className=' grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12 mx-auto'>
+                <div className="card w-96 bg-base-100 shadow-xl mx-auto">
                     <figure className="px-10 pt-10">
                         <img src={img1} alt="" className="rounded-xl" />
                     </figure>
@@ -21,7 +21,7 @@ const UpcomingCourses = () => {
 
                     </div>
                 </div>
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card w-96 bg-base-100 shadow-xl mx-auto">
                     <figure className="px-10 pt-10">
                         <img src={img2} alt="" className="rounded-xl" />
                     </figure>
@@ -31,7 +31,7 @@ const UpcomingCourses = () => {
 
                     </div>
                 </div>
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card w-96 bg-base-100 shadow-xl mx-auto">
                     <figure className="px-10 pt-10">
                         <img src={img3} alt="" className="rounded-xl" />
                     </figure>

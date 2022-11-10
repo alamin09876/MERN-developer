@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Update = () => {
     const storedUser = useLoaderData();
-    
+    const notify = () => toast("Update review successfully!");
     const [user, setUser] = useState(storedUser);
     console.log(user)
 
@@ -29,7 +31,7 @@ const Update = () => {
         .then(res => res.json())
         .then(data => {
             if(data.matchedCount > 0){
-                alert("User update successfully")
+              
                 
             }
             console.log(data)
@@ -40,11 +42,13 @@ const Update = () => {
     
 
     return (
-        <div>
-            <h2>Please Update: {storedUser.reviewData}</h2>
+        <div className='mx-auto justify-center text-center'>
+            <h2 className='text-2xl mx-auto lg:w-[800px] font-semibold my-6 p-6 rounded-lg'>Please Update: {storedUser.reviewData}</h2>
             <form onSubmit={handleUpdateUser}>
-            <textarea  name="review" className="textarea textarea-bordered h-24 w-full" placeholder="Your Message" defaultValue={storedUser.reviewData} required></textarea>
-                <button type="submit">Update User</button>
+            <textarea  name="review" className="textarea textarea-bordered h-24 w-full lg:w-[800px]" placeholder="Your Message" defaultValue={storedUser.reviewData} required></textarea>
+            <br></br>
+                <button onClick={notify} className='btn btn-primary my-6 rounded-lg' type="submit">Update User</button>
+                <ToastContainer />
             </form>
         </div>
     );

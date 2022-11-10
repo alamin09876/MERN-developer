@@ -1,10 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import useTitle from '../../../title/Title';
 import ServiceCard from './ServiceCard';
 
 const Services = () => {
+    useTitle('services');
     const [services, setServices] = useState([]);
     const serv = services;
     
@@ -14,6 +15,7 @@ const Services = () => {
         .then(data => setServices(data))
     }, []);
 
+    
     return (
         <div>
             <div className='text-center my-6'>

@@ -5,7 +5,7 @@ const AboutMe = () => {
     return (
         <div className="hero ">
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src={img} alt="" className="max-w-sm rounded-lg shadow-2xl" />
+                <img src={img} alt="" className="max-w-sm  shadow-2xl rounded-full" />
                 <div>
                     <h1 className="text-5xl font-bold">About Me!</h1>
                     <p className="py-6">I'm Al-Amin, I'm a developer with a passion for teaching. I'm the lead instructor at the London App Brewery, London's leading Programming Bootcamp. I've helped hundreds of thousands of students learn to code and change their lives by becoming a developer. I've been invited by companies such as Twitter, Facebook and Google to teach their employees.

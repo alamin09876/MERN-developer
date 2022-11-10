@@ -2,21 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../../title/Title';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const MyReviews = () => {
-
+    useTitle('My Review')
     const [reviews, setReviews] = useState([])
-    // const [deleteReview, setDeleteReview] = useState([])
+    const notify = () => toast("Delete review successfully!");
     const { user } = useContext(AuthContext)
-    // console.log(reviews)
-
-    // useEffect(() =>{
-    //     fetch('https://mern-developer-server.vercel.app/reviews')
-    //     .then(res => res.json())
-    //     .then(data => setDeleteReview(data))
-    // },[])
-
-    // console.log(deleteReview)
     const handleDelete = review => {
         const agree = window.confirm(`Are you sure you want to delete : ${review.reviewData}`)
         if (agree) {
@@ -27,7 +21,7 @@ const MyReviews = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert("User deleted successfully")
+                        <ToastContainer />
 
                         const remaining = reviews.filter(dlt => dlt._id !== review._id)
                         setReviews(remaining)
@@ -44,7 +38,7 @@ const MyReviews = () => {
     const filtered = reviews.filter(obj => {
         return obj.userEmail === user?.email;
     });
-    // console.log(filtered);
+   
 
 
     return (
@@ -60,6 +54,7 @@ const MyReviews = () => {
                                     <div className="card-body grid grid-cols-2 items-center">
                                         <div>
                                             <p className='text-xl'>{rev.userName}</p>
+                                            <p>{rev.courseName}</p>
                                             <h2 className="">{rev.reviewData}</h2>
                                         </div>
 
@@ -70,7 +65,8 @@ const MyReviews = () => {
                                                 </Link>
                                             </button>
                                             <button onClick={() => handleDelete(rev)} className="btn btn-primary">
-                                                <FaTrash></FaTrash>
+                                                <FaTrash onClick={notify}></FaTrash>
+                                                <ToastContainer />
                                             </button>
                                         </div>
                                     </div>

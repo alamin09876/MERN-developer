@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import useTitle from '../../../title/Title';
 
 const AddService = () => {
+    useTitle('Add Course');
     const { user } = useContext(AuthContext);
-    const notify = () => toast("Wow so easy!");
+    const notify = () => toast("Add New Course!");
     const handleReview = event => {
         event.preventDefault();
         const form = event.target;
@@ -30,10 +32,7 @@ const AddService = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                // if(data.acknowledged){
-                //     alert("Order placed Successfully")
-                //     form.reset();
-                // }
+                
 
             })
             .catch(err => console.log(err))
